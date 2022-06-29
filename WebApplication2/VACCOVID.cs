@@ -566,7 +566,7 @@ namespace VACCOVID
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Vaccine");
                 var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/Vaccine");
                 var result = JsonConvert.DeserializeObject<List<VaccineWorld>>(json);
-                for (int i = 0; i < result.Count; i++)
+                for (int i = 0; i < 15; i++)
                 {
 
                     await botClient.SendTextMessageAsync(message.Chat.Id, $" developerResearcher:{result[i].developerResearcher}\n " +
