@@ -102,7 +102,7 @@ namespace VACCOVID
                 {
                     string[] country = callbackQuery.Message.Text.Split(' ');
 
-                    var json = webClient.DownloadString($"https://localhost:44393/Covid/{country[0]}/{country[1]}");
+                    var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/Covid/{country[0]}/{country[1]}");
                     var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
 
                     await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"Covid: {result.FirstOrDefault().Continent}\nCountry: {result.FirstOrDefault().Country}\nInfection_Risk: {result.FirstOrDefault().Infection_Risk}\nTotalCases: {result.FirstOrDefault().TotalCases}\nNewCases: {result.FirstOrDefault().NewCases}\nTotalDeaths: {result.FirstOrDefault().TotalCases}\nNewDeaths: {result.FirstOrDefault().NewDeaths}\nTotalRecovered: {result.FirstOrDefault().TotalRecovered}\nNewRecovered: {result.FirstOrDefault().NewRecovered}\nActiveCases: {result.FirstOrDefault().ActiveCases}\nSerious_Critical: {result.FirstOrDefault().Serious_Critical}");
@@ -116,7 +116,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Covid Asian"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"Asia");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidAsian");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidAsian");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -138,7 +138,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Covid Australian and Oceanian counties"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"Australian and Oceanian counties");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidAustralian_and_Oceanian_counties");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidAustralian_and_Oceanian_counties");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -164,7 +164,7 @@ namespace VACCOVID
             if (callbackQuery.Message.ReplyToMessage != null && callbackQuery.Message.ReplyToMessage.Text.Contains("Enter the country name in abbreviated form, in lower case, example: ukr"))
             {
                 string iso = callbackQuery.Message.Text;
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidCountry/{iso}");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidCountry/{iso}");
                 var result = JsonConvert.DeserializeObject<List<CovidCountry>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -183,7 +183,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Covid European"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"European");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidEuropean");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidEuropean");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -205,7 +205,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Covid Northern American"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $" Northern American");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidNorthernAmerican");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidNorthernAmerican");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -227,7 +227,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Covid Southern American"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"Southern American");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidSouthernAmerican");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidSouthernAmerican");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -249,7 +249,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Treatments"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"Treatments");
-                var json = webClient.DownloadString($"https://localhost:44393/api/Treatments");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/Treatments");
                 var result = JsonConvert.DeserializeObject<List<Treatments>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -270,7 +270,7 @@ namespace VACCOVID
             if (callbackQuery.Data.StartsWith("Vaccine"))
             {
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, $"Treatments");
-                var json = webClient.DownloadString($"https://localhost:44393/api/Vaccine");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/Vaccine");
                 var result = JsonConvert.DeserializeObject<List<VaccineWorld>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -368,7 +368,7 @@ namespace VACCOVID
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Africa");
 
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidAfrica");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidAfrica");
 
                 var result = JsonConvert.DeserializeObject<List<CovidAfrica>>(json);
                 for (int i = 0; i < result.Count; i++)
@@ -397,7 +397,7 @@ namespace VACCOVID
             if (message.Text == "Covid Asian")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Asia");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidAsian");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidAsian");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -420,7 +420,7 @@ namespace VACCOVID
             if (message.Text == "Covid Australian and Oceanian counties")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Australian and Oceanian counties");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidAustralian_and_Oceanian_counties");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidAustralian_and_Oceanian_counties");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -442,7 +442,7 @@ namespace VACCOVID
             if (message.Text == "Covid European")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"European");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidEuropean");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidEuropean");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -465,7 +465,7 @@ namespace VACCOVID
             if (message.Text == "Covid Northern American")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $" Northern American");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidNorthernAmerican");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidNorthernAmerican");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -488,7 +488,7 @@ namespace VACCOVID
             {
 
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Southern American");
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidSouthernAmerican");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidSouthernAmerican");
                 var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -519,7 +519,7 @@ namespace VACCOVID
                 
                 
                     string page = message.Text;
-                    var json = webClient.DownloadString($"https://localhost:44393/api/CovidNews/{page}");
+                    var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidNews/{page}");
                     var result = JsonConvert.DeserializeObject<CovidNews>(json);
                      
 
@@ -538,10 +538,10 @@ namespace VACCOVID
             {
                 
             }
-                if (message.Text == "Treatments")
+            if (message.Text == "Treatments")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Treatments");
-                var json = webClient.DownloadString($"https://localhost:44393/api/Treatments");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/Treatments");
                 var result = JsonConvert.DeserializeObject<List<Treatments>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -561,10 +561,10 @@ namespace VACCOVID
 
             }
             else
-            if (message.Text == "Vaccine")
+        if (message.Text == "Vaccine")
             {
                 await botClient.SendTextMessageAsync(message.Chat.Id, $"Vaccine");
-                var json = webClient.DownloadString($"https://localhost:44393/api/Vaccine");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/Vaccine");
                 var result = JsonConvert.DeserializeObject<List<VaccineWorld>>(json);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -587,7 +587,7 @@ namespace VACCOVID
                 if (message.ReplyToMessage != null && message.ReplyToMessage.Text.Contains("Choosen page 1-25"))
             {
                 string page = message.Text;
-                var json = webClient.DownloadString($"https://localhost:44393/api/HealthNews/{page}");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/HealthNews/{page}");
                 var result = JsonConvert.DeserializeObject<CovidNews>(json);
                 for (int i = 0; i < result.news.Length; i++)
                 {
@@ -605,7 +605,7 @@ namespace VACCOVID
             if (message.ReplyToMessage != null && message.ReplyToMessage.Text.Contains("Choosen page 1-25"))
             {
                 string page = message.Text;
-                var json = webClient.DownloadString($"https://localhost:44393/api/VaccineNews/{page}");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/VaccineNews/{page}");
                 var result = JsonConvert.DeserializeObject<CovidNews>(json);
                 for (int i = 0; i < result.news.Length; i++)
                 {
@@ -623,7 +623,7 @@ namespace VACCOVID
             if (message.ReplyToMessage != null && message.ReplyToMessage.Text.Contains("Enter the country name in abbreviated form, in lower case, example: ukr"))
             {   
                     string iso = message.Text;
-                    var json = webClient.DownloadString($"https://localhost:44393/api/CovidCountry/{iso}");
+                    var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidCountry/{iso}");
 
                     var result = JsonConvert.DeserializeObject<List<CovidCountry>>(json);
 
@@ -667,7 +667,7 @@ namespace VACCOVID
                 {
                     string[] country = message.Text.Split(' ');
 
-                    var json = webClient.DownloadString($"https://localhost:44393/Covid/{country[0]}/{country[1]}");
+                    var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/Covid/{country[0]}/{country[1]}");
                     var result = JsonConvert.DeserializeObject<List<WorldData>>(json);
 
                     await botClient.SendTextMessageAsync(message.Chat.Id, $"Covid: {result.FirstOrDefault().Continent}\nCountry: {result.FirstOrDefault().Country}\nInfection_Risk: {result.FirstOrDefault().Infection_Risk}\nTotalCases: {result.FirstOrDefault().TotalCases}\nNewCases: {result.FirstOrDefault().NewCases}\nTotalDeaths: {result.FirstOrDefault().TotalCases}\nNewDeaths: {result.FirstOrDefault().NewDeaths}\nTotalRecovered: {result.FirstOrDefault().TotalRecovered}\nNewRecovered: {result.FirstOrDefault().NewRecovered}\nActiveCases: {result.FirstOrDefault().ActiveCases}\nSerious_Critical: {result.FirstOrDefault().Serious_Critical}");
