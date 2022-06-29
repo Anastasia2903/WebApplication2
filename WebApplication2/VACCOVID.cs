@@ -64,7 +64,7 @@ namespace VACCOVID
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, text: $"Africa");
 
 
-                var json = webClient.DownloadString($"https://localhost:44393/api/CovidAfrica");
+                var json = webClient.DownloadString($"https://apicovidd.herokuapp.com/api/CovidAfrica");
 
                 var result = JsonConvert.DeserializeObject<List<CovidAfrica>>(json);
                 for (int i = 0; i < result.Count; i++)
